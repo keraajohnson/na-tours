@@ -5,13 +5,18 @@ const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 
 const app = express();
-app.use(morgan('dev'));
+
+// MIDDLEWARES
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
+
 app.use(express.json());
+app.use(express.static(`${__dirname}/public`));
 
 // these apply to every single request we recieve
 // express knows we're defining middleware
 app.use((req, res, next) => {
-  console.log('hello, from the middleware');
   // always use next in middleware
   next();
 });
