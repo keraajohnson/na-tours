@@ -7,7 +7,7 @@ const toursSchema = new mongoose.Schema({
     required: [true, 'A tour must have a name'],
     unique: true,
   },
-  duration: {
+  durations: {
     type: Number,
     required: [true, 'A tour must have a duration'],
   },
@@ -39,7 +39,22 @@ const toursSchema = new mongoose.Schema({
   summary: {
     type: String,
     trim: true,
+    required: [true, 'A tour must have a summary'],
   },
+  description: {
+    type: String,
+    trim: true,
+  },
+  imageCover: {
+    type: String,
+    required: [true, 'A tour must have an image'],
+  },
+  images: [String],
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
+  startDates: [Date],
 });
 
 // models should always be capitalized
