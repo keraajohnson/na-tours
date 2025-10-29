@@ -7,7 +7,7 @@ const toursSchema = new mongoose.Schema({
     required: [true, 'A tour must have a name'],
     unique: true,
   },
-  durations: {
+  duration: {
     type: Number,
     required: [true, 'A tour must have a duration'],
   },
@@ -16,7 +16,7 @@ const toursSchema = new mongoose.Schema({
     required: [true, 'A tour must have a max group size'],
   },
   difficulty: {
-    type: string,
+    type: String,
     required: [true, 'A tour must have a difficulty rating'],
   },
   rating: {
@@ -53,6 +53,7 @@ const toursSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now(),
+    select: false,
   },
   startDates: [Date],
 });
